@@ -58,10 +58,13 @@ for i in range(len(r_list)):
      
 print (".........................................................")
 
-selected_f = ['year','reanalysis_air_temp_k','reanalysis_min_air_temp_k','reanalysis_tdtr_k','station_diur_temp_rng_c','station_min_temp_c']
-selected_f_sj = ['week_value','weekofyear','reanalysis_dew_point_temp_k','reanalysis_max_air_temp_k','reanalysis_specific_humidity_g_per_kg']
+#selected_f = ['year','reanalysis_air_temp_k','reanalysis_min_air_temp_k','reanalysis_tdtr_k','station_diur_temp_rng_c','station_min_temp_c']
+#selected_f_sj = ['week_value','weekofyear','reanalysis_dew_point_temp_k','reanalysis_max_air_temp_k','reanalysis_specific_humidity_g_per_kg']
 
-poly_sj = PolynomialFeatures(degree=1);
+selected_f = features;
+selected_f_sj = features;
+
+poly_sj = PolynomialFeatures(degree=3);
 poly_data_sj = poly_sj.fit_transform(data_sj[selected_f_sj]);
 
 x= data_sj['total_cases'];
@@ -80,14 +83,14 @@ for d in train_pred_sj:
         d=math.ceil(d)
         dr = round(d)
     ceil_train_pred_sj.append(d)
-    round_train_pred_sj.append(dr)
+    round_train_pred_sj.append(d)
 
 sqrt_sj = np.sqrt(metrics.mean_squared_error(data_sj[['total_cases']],ceil_train_pred_sj))
 print(mean_absolute_error(data_sj[['total_cases']],ceil_train_pred_sj))
 print(mean_absolute_error(data_sj[['total_cases']],round_train_pred_sj))
 print(sqrt_sj)
 
-poly_iq = PolynomialFeatures(degree=1);
+poly_iq = PolynomialFeatures(degree=3);
 poly_data_iq = poly_iq.fit_transform(data_iq[selected_f]);
 
 linreg_iq = LinearRegression()

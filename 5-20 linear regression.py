@@ -19,10 +19,10 @@ from sklearn.preprocessing import Imputer
 import math
 from sklearn.metrics import mean_absolute_error
 
-train_data = pd.read_csv('/home/adeesha/repos/DengAI/dengue_features_train.csv')
-test_data = pd.read_csv('/home/adeesha/repos/DengAI/dengue_features_test.csv')
-labels_train = pd.read_csv('/home/adeesha/repos/DengAI/dengue_labels_train.csv')
-submission_data = pd.read_csv('/home/adeesha/repos/DengAI/submission_format.csv')
+train_data = pd.read_csv('dengue_features_train.csv')
+test_data = pd.read_csv('dengue_features_test.csv')
+labels_train = pd.read_csv('dengue_labels_train.csv')
+submission_data = pd.read_csv('submission_format.csv')
 
 data = pd.concat([train_data, labels_train], axis=1, join_axes=[train_data.index])
 
